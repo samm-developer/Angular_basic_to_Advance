@@ -1,9 +1,11 @@
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 export interface Task {
   id: number;
   title: string;
+  dueDate: string;
   done: boolean;
 }
 
@@ -15,18 +17,19 @@ export interface Task {
  */
 @Component({
   selector: 'app-lesson-02',
-  imports: [FormsModule],
+  imports: [FormsModule, DatePipe],
   templateUrl: './lesson-02.component.html',
   styleUrl: './lesson-02.component.css',
 })
 export class Lesson02Component {
   newTaskTitle = '';
+  newTaskDueDate = '';
   showCompleted = true;
 
   tasks: Task[] = [
-    { id: 1, title: 'Read lesson-02.component.ts', done: true },
-    { id: 2, title: 'Try the @for loop in the template', done: false },
-    { id: 3, title: 'Add your own task below', done: false },
+    { id: 1, title: 'Read lesson-02.component.ts', dueDate: '2026-08-15', done: true },
+    { id: 2, title: 'Try the @for loop in the template', dueDate: '2026-08-20', done: false },
+    { id: 3, title: 'Add your own task below', dueDate: '2026-08-25', done: false },
   ];
 
   private nextId = 4;
@@ -47,15 +50,16 @@ export class Lesson02Component {
 
   addTask(): void {
     const title = this.newTaskTitle.trim();
-    if (!title) {
+    if (!title || !this.newTaskDueDate) {
       return;
     }
 
     this.tasks = [
       ...this.tasks,
-      { id: this.nextId++, title, done: false },
+      { id: this.nextId++, title, dueDate: this.newTaskDueDate, done: false },
     ];
     this.newTaskTitle = '';
+    this.newTaskDueDate = '';
   }
 
   toggleTask(task: Task): void {
@@ -77,6 +81,6 @@ export class Lesson02Component {
 }`;
 
   readonly forExample = `@for (task of visibleTasks; track task.id) {
-  <li>{{ task.title }}</li>
+  <li>{{ task.title }} — due {{ task.dueDate }}</li>
 }`;
 }

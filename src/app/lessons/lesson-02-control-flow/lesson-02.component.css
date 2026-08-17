@@ -107,7 +107,7 @@ h1 {
   border-radius: 8px;
 }
 
-.task-list li.done span {
+.task-list li.done .task-title {
   text-decoration: line-through;
   color: #7a756c;
 }
@@ -120,6 +120,17 @@ h1 {
   cursor: pointer;
 }
 
+.task-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.task-due {
+  font-size: 0.8rem;
+  color: #5c574e;
+}
+
 .empty {
   margin: 0;
   color: #5c574e;
@@ -127,15 +138,25 @@ h1 {
 
 .add-form {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
+  align-items: center;
 }
 
-input[type='text'] {
-  flex: 1;
+input[type='text'],
+input[type='date'] {
   border: 1px solid #cfc6b8;
   border-radius: 8px;
   padding: 0.55rem 0.75rem;
   font: inherit;
+}
+
+input[type='text'] {
+  flex: 1 1 12rem;
+}
+
+input[type='date'] {
+  flex: 0 0 auto;
 }
 
 button {

@@ -69,7 +69,10 @@
                   [checked]="task.done"
                   (change)="toggleTask(task)"
                 />
-                <span>{{ task.title }}</span>
+                <span class="task-content">
+                  <span class="task-title">{{ task.title }}</span>
+                  <span class="task-due">Due {{ task.dueDate | date: 'mediumDate' }}</span>
+                </span>
               </label>
               <button type="button" class="ghost" (click)="removeTask(task.id)">
                 Remove
@@ -86,23 +89,31 @@
   <section class="card lab">
     <h2>4. Lab: two-way binding with forms</h2>
     <p>
-      <code>[(ngModel)]</code> keeps an input and a class property in sync.
-      That is how the “Add task” form talks to <code>newTaskTitle</code>.
+      <code>[(ngModel)]</code> keeps inputs and class properties in sync.
+      The form binds <code>newTaskTitle</code> and <code>newTaskDueDate</code>.
     </p>
 
     <form class="playground add-form" (ngSubmit)="addTask()">
       <input
         type="text"
         name="title"
-        placeholder="What do you want to learn next?"
+        placeholder="Task title"
         [(ngModel)]="newTaskTitle"
       />
-      <button type="submit">Add task</button>
+      <input
+        type="date"
+        name="dueDate"
+        [(ngModel)]="newTaskDueDate"
+      />
+      <button type="submit" [disabled]="!newTaskTitle.trim() || !newTaskDueDate">
+        Add task
+      </button>
     </form>
 
     <p class="hint">
-      Live preview of the bound value:
-      <code>{{ newTaskTitle || '(empty)' }}</code>
+      Live preview:
+      title <code>{{ newTaskTitle || '(empty)' }}</code>,
+      due date <code>{{ newTaskDueDate || '(not set)' }}</code>
     </p>
   </section>
 
