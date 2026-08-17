@@ -1,0 +1,43 @@
+<article class="lesson">
+  <p class="eyebrow">Lesson 11 · Testing</p>
+  <h1>Unit &amp; component testing</h1>
+  <p class="lede">
+    Angular uses <strong>Jasmine</strong> (assertions) and <strong>Karma</strong> (test runner).
+    Open the spec files in this lesson and run <code>npm test</code>.
+  </p>
+
+  <section class="card">
+    <h2>1. Two test types in this lesson</h2>
+    <ul>
+      <li><strong>Component test</strong> — render UI, click buttons, check DOM.</li>
+      <li><strong>Service test</strong> — test plain TypeScript logic with <code>TestBed.inject</code>.</li>
+    </ul>
+  </section>
+
+  <section class="card lab">
+    <h2>2. Live demo component</h2>
+    <p>This counter is what the component spec tests.</p>
+    <app-counter />
+  </section>
+
+  <section class="card">
+    <h2>3. Files to open</h2>
+    <ol>
+      <li><code>demo/counter.component.spec.ts</code></li>
+      <li><code>demo/stats.service.spec.ts</code></li>
+      <li><code>app.component.spec.ts</code> (project root spec)</li>
+    </ol>
+
+    <pre class="code"><code>{{ componentSpecHint }}</code></pre>
+    <pre class="code"><code>{{ serviceSpecHint }}</code></pre>
+  </section>
+
+  <section class="card next">
+    <h2>Run tests</h2>
+    <pre class="code"><code>npm test</code></pre>
+    <p class="hint">
+      Karma opens a browser, runs all <code>*.spec.ts</code> files, and shows pass/fail.
+      In interviews: mention Arrange → Act → Assert pattern.
+    </p>
+  </section>
+</article>

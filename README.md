@@ -23,6 +23,7 @@ Then open [http://localhost:4200](http://localhost:4200).
 | 8 | RxJS & async pipe | `/lesson-8` |
 | 9 | **Capstone** — full Task Manager | `/lesson-9` |
 | 10 | Angular Signals (`signal`, `computed`, `effect`) | `/lesson-10` |
+| 11 | Unit & component testing (Jasmine/Karma) | `/lesson-11` |
 
 ## Lesson 1 files to read
 

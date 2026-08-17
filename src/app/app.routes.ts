@@ -11,6 +11,7 @@ import { LoginComponent } from './lessons/lesson-07-routing-guards/login/login.c
 import { Lesson08Component } from './lessons/lesson-08-rxjs/lesson-08.component';
 import { Lesson09Component } from './lessons/lesson-09-capstone/lesson-09.component';
 import { Lesson10Component } from './lessons/lesson-10-signals/lesson-10.component';
+import { Lesson11Component } from './lessons/lesson-11-testing/lesson-11.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'lesson-1', pathMatch: 'full' },
@@ -25,4 +26,5 @@ export const routes: Routes = [
   { path: 'lesson-8', component: Lesson08Component },
   { path: 'lesson-9', component: Lesson09Component },
   { path: 'lesson-10', component: Lesson10Component },
+  { path: 'lesson-11', component: Lesson11Component },
 ];

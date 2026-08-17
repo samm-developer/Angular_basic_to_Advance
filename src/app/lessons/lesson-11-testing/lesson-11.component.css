@@ -1,0 +1,60 @@
+.lesson {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a2b2b;
+  font-weight: 700;
+}
+
+h1 {
+  margin: 0.2rem 0 0;
+  font-size: 2rem;
+}
+
+.lede {
+  margin: 0.75rem 0 0.25rem;
+  color: #3d3a36;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e6e0d6;
+  border-radius: 12px;
+  padding: 1.25rem 1.35rem;
+}
+
+.card ul,
+.card ol {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.card li {
+  margin: 0.4rem 0;
+}
+
+.code {
+  margin: 0.75rem 0 0;
+  padding: 0.85rem 1rem;
+  overflow-x: auto;
+  background: #1a1612;
+  color: #f4efe6;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  white-space: pre-wrap;
+}
+
+.hint {
+  margin: 0.75rem 0 0;
+  color: #5c574e;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
