@@ -22,10 +22,14 @@
   </section>
 
   <section class="card lab">
-    <h2>2. Lab: load tasks from JSON</h2>
+    <h2>2. Lab: load tasks from a dummy API</h2>
     <p>
-      Data comes from <code>public/lessons/tasks.json</code>.
-      Open DevTools → Network tab → click <strong>Reload</strong> to see the request.
+      Data comes from
+      <a href="https://jsonplaceholder.typicode.com/todos" target="_blank" rel="noopener">
+        JSONPlaceholder
+      </a>
+      — a free fake REST API. Open DevTools → Network tab → click
+      <strong>Reload</strong> to see the HTTP request.
     </p>
 
     <div class="playground">
@@ -63,8 +67,7 @@
     <h2>3. Files to read</h2>
     <ol>
       <li><code>app.config.ts</code> — <code>provideHttpClient()</code> enables HTTP</li>
-      <li><code>public/lessons/tasks.json</code> — fake API response</li>
-      <li><code>task-api.service.ts</code> — wraps <code>HttpClient.get()</code></li>
+      <li><code>task-api.service.ts</code> — calls JSONPlaceholder and maps the response</li>
       <li><code>lesson-05.component.ts</code> — subscribes and sets <code>loading</code> / <code>error</code></li>
     </ol>
   </section>

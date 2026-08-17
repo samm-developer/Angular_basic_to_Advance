@@ -6,7 +6,7 @@ import { TaskApiService } from './task-api.service';
 /**
  * LESSON 5 — HTTP & Observables
  *
- * Data is loaded from a JSON file via HttpClient.
+ * Data is loaded from JSONPlaceholder via HttpClient.
  * The response is an Observable — we subscribe to get the values.
  */
 @Component({
@@ -36,7 +36,7 @@ export class Lesson05Component implements OnInit {
         this.loading = false;
       },
       error: () => {
-        this.error = 'Could not load tasks. Check the network or JSON file.';
+        this.error = 'Could not load tasks. Check your internet connection.';
         this.loading = false;
       },
     });
@@ -54,7 +54,11 @@ export class Lesson05Component implements OnInit {
 
   readonly httpExample = `// task-api.service.ts
 getTasks(): Observable<Task[]> {
-  return this.http.get<Task[]>('/lessons/tasks.json');
+  return this.http
+    .get<TodoDto[]>('https://jsonplaceholder.typicode.com/todos', {
+      params: { _limit: '8' },
+    })
+    .pipe(map(todos => todos.map(todo => this.toTask(todo))));
 }`;
 
   readonly subscribeExample = `// lesson-05.component.ts
