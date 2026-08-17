@@ -1,0 +1,81 @@
+<article class="lesson">
+  <p class="eyebrow">Lesson 9 · Capstone</p>
+  <h1>Task Manager — putting it all together</h1>
+  <p class="lede">
+    This page combines everything you learned: a <strong>service</strong> loads data over
+    <strong>HTTP</strong>, a <strong>reactive form</strong> adds tasks,
+    <strong>child components</strong> display rows and stats, and the
+    <strong>async pipe</strong> shows loading state.
+  </p>
+
+  <section class="card map">
+    <h2>Which lesson is used where?</h2>
+    <ul>
+      <li><strong>L5 + L8</strong> — <code>TaskApiService</code> + HTTP load</li>
+      <li><strong>L4</strong> — <code>TaskManagerService</code> holds shared state</li>
+      <li><strong>L6</strong> — reactive form to add tasks</li>
+      <li><strong>L3</strong> — <code>app-task-row</code> with &#64;Input / &#64;Output</li>
+      <li><strong>L8</strong> — <code>loading$ | async</code>, <code>tasks$ | async</code></li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <app-capstone-summary />
+  </section>
+
+  <section class="card lab">
+    <h2>Add a task</h2>
+    <form [formGroup]="taskForm" (ngSubmit)="submit()">
+      <div class="row">
+        <input formControlName="title" placeholder="Task title" />
+        <input type="date" formControlName="dueDate" />
+        <button type="submit" [disabled]="taskForm.invalid">Add</button>
+      </div>
+      @if (taskForm.controls.title.touched && taskForm.controls.title.invalid) {
+        <p class="error">Title must be at least 3 characters.</p>
+      }
+    </form>
+  </section>
+
+  <section class="card lab">
+    <div class="toolbar">
+      <h2>Task list</h2>
+      <button type="button" (click)="reload()">Reload from API</button>
+    </div>
+
+    @if (taskManager.loading$ | async) {
+      <p class="status loading">Loading from JSONPlaceholder…</p>
+    } @else {
+      @if (taskManager.error$ | async; as err) {
+        @if (err) {
+          <p class="status error">{{ err }}</p>
+        }
+      }
+
+      @if (taskManager.tasks$ | async; as tasks) {
+        @if (tasks.length === 0) {
+          <p class="empty">No tasks. Add one above or reload from API.</p>
+        } @else {
+          <ul class="task-list">
+            @for (task of tasks; track task.id) {
+              <app-task-row
+                [task]="task"
+                (toggle)="taskManager.toggleTask($event)"
+                (remove)="taskManager.removeTask($event)"
+              />
+            }
+          </ul>
+        }
+      }
+    }
+  </section>
+
+  <section class="card next">
+    <h2>You built a real Angular feature</h2>
+    <p>
+      Open <code>task-manager.service.ts</code> and trace each method.
+      This is how production apps are structured — not one giant component,
+      but small pieces working together.
+    </p>
+  </section>
+</article>

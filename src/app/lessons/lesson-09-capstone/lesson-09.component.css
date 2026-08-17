@@ -1,0 +1,127 @@
+.lesson {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a2b2b;
+  font-weight: 700;
+}
+
+h1 {
+  margin: 0.2rem 0 0;
+  font-size: 2rem;
+}
+
+.lede {
+  margin: 0.75rem 0 0.25rem;
+  font-size: 1.05rem;
+  color: #3d3a36;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e6e0d6;
+  border-radius: 12px;
+  padding: 1.25rem 1.35rem;
+}
+
+.card h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.15rem;
+}
+
+.card ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.card li {
+  margin: 0.4rem 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+input {
+  flex: 1 1 10rem;
+  border: 1px solid #cfc6b8;
+  border-radius: 8px;
+  padding: 0.55rem 0.75rem;
+  font: inherit;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 0.55rem 0.9rem;
+  background: #1a1612;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.error {
+  margin: 0.5rem 0 0;
+  color: #c3002f;
+  font-size: 0.9rem;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.toolbar h2 {
+  margin: 0;
+}
+
+.status {
+  margin: 0 0 0.75rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.status.loading {
+  background: #fff3d6;
+  color: #7a4d00;
+}
+
+.status.error {
+  background: #fde8ea;
+  color: #8a1c2a;
+}
+
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.empty {
+  margin: 0;
+  color: #5c574e;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}

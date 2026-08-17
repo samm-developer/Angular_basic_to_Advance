@@ -9,6 +9,7 @@ import { authGuard } from './lessons/lesson-07-routing-guards/auth.guard';
 import { Lesson07Component } from './lessons/lesson-07-routing-guards/lesson-07.component';
 import { LoginComponent } from './lessons/lesson-07-routing-guards/login/login.component';
 import { Lesson08Component } from './lessons/lesson-08-rxjs/lesson-08.component';
+import { Lesson09Component } from './lessons/lesson-09-capstone/lesson-09.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'lesson-1', pathMatch: 'full' },
@@ -21,4 +22,5 @@ export const routes: Routes = [
   { path: 'lesson-6', component: Lesson06Component },
   { path: 'lesson-7', component: Lesson07Component, canActivate: [authGuard] },
   { path: 'lesson-8', component: Lesson08Component },
+  { path: 'lesson-9', component: Lesson09Component },
 ];

@@ -21,6 +21,7 @@ Then open [http://localhost:4200](http://localhost:4200).
 | 6 | Reactive Forms & validation | `/lesson-6` |
 | 7 | Routing guards & auth | `/lesson-7` (login: `student` / `angular`) |
 | 8 | RxJS & async pipe | `/lesson-8` |
+| 9 | **Capstone** — full Task Manager | `/lesson-9` |
 
 ## Lesson 1 files to read
 
