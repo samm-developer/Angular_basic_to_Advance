@@ -1,0 +1,14 @@
+<li [class.done]="task.done">
+  <label>
+    <input
+      type="checkbox"
+      [checked]="task.done"
+      (change)="onToggle()"
+    />
+    <span class="task-content">
+      <span class="task-title">{{ task.title }}</span>
+      <span class="task-due">Due {{ task.dueDate | date: 'mediumDate' }}</span>
+    </span>
+  </label>
+  <button type="button" class="ghost" (click)="onRemove()">Remove</button>
+</li>

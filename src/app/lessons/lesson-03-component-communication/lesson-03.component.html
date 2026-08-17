@@ -1,0 +1,92 @@
+<article class="lesson">
+  <p class="eyebrow">Lesson 3 of 3 · Components</p>
+  <h1>Component communication: &#64;Input and &#64;Output</h1>
+  <p class="lede">
+    Lesson 2 put everything in one component. Real apps split UI into smaller pieces.
+    The <strong>parent</strong> owns the data; <strong>children</strong> display it and
+    send events back up.
+  </p>
+
+  <section class="card">
+    <h2>1. The pattern</h2>
+    <ul>
+      <li><code>&#64;Input</code> — parent passes data <em>down</em> to a child.</li>
+      <li><code>&#64;Output</code> — child emits events <em>up</em> to the parent.</li>
+      <li>Data flows down, events flow up. The parent stays the single source of truth.</li>
+    </ul>
+
+    <div class="diagram">
+      <div class="box parent">Lesson03Component<br /><small>owns tasks[]</small></div>
+      <div class="arrow">[task] ↓ &nbsp; ↑ (toggle)</div>
+      <div class="box child">TaskRowComponent<br /><small>displays one row</small></div>
+    </div>
+  </section>
+
+  <section class="card lab">
+    <h2>2. Lab: add a task (child form → parent)</h2>
+    <p>
+      <code>TaskFormComponent</code> is a child. It does not know about the full list —
+      it only emits an <code>add</code> event with <code>title</code> and <code>dueDate</code>.
+    </p>
+
+    <div class="playground">
+      <app-task-form (add)="onAdd($event)" />
+    </div>
+
+    <pre class="code"><code>{{ formOutputExample }}</code></pre>
+  </section>
+
+  <section class="card lab">
+    <h2>3. Lab: task list (parent → child rows)</h2>
+    <p>
+      The parent loops and passes each <code>task</code> into
+      <code>app-task-row</code>. The child renders the row and emits
+      <code>toggle</code> / <code>remove</code> with the task id.
+    </p>
+
+    <div class="playground">
+      @if (tasks.length === 0) {
+        <p class="empty">No tasks yet. Add one above.</p>
+      } @else {
+        <ul class="task-list">
+          @for (task of tasks; track task.id) {
+            <app-task-row
+              [task]="task"
+              (toggle)="onToggle($event)"
+              (remove)="onRemove($event)"
+            />
+          }
+        </ul>
+      }
+    </div>
+
+    <pre class="code"><code>{{ inputExample }}</code></pre>
+    <pre class="code"><code>{{ outputExample }}</code></pre>
+    <pre class="code"><code>{{ parentExample }}</code></pre>
+  </section>
+
+  <section class="card">
+    <h2>4. Files to read (in order)</h2>
+    <ol>
+      <li><code>task.model.ts</code> — shared <code>Task</code> type</li>
+      <li><code>task-row/task-row.component.ts</code> — child with &#64;Input / &#64;Output</li>
+      <li><code>task-form/task-form.component.ts</code> — child that emits <code>add</code></li>
+      <li><code>lesson-03.component.ts</code> — parent that owns <code>tasks</code></li>
+      <li><code>lesson-03.component.html</code> — wires children together</li>
+    </ol>
+  </section>
+
+  <section class="card next">
+    <h2>What you should remember</h2>
+    <ul>
+      <li><code>[task]="task"</code> is property binding into an &#64;Input.</li>
+      <li><code>(toggle)="onToggle($event)"</code> listens to an &#64;Output.</li>
+      <li>Children stay dumb and reusable; parents hold state and business logic.</li>
+      <li>One shared model file avoids duplicating interfaces.</li>
+    </ul>
+    <p class="hint">
+      Next lesson (when you are ready): services &amp; dependency injection —
+      sharing data and logic across many components.
+    </p>
+  </section>
+</article>

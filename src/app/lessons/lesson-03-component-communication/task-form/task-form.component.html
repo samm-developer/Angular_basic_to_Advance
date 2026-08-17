@@ -1,0 +1,10 @@
+<form class="add-form" (ngSubmit)="submit()">
+  <input
+    type="text"
+    name="title"
+    placeholder="Task title"
+    [(ngModel)]="title"
+  />
+  <input type="date" name="dueDate" [(ngModel)]="dueDate" />
+  <button type="submit" [disabled]="!title.trim() || !dueDate">Add tasksss</button>
+</form>
