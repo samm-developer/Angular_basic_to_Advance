@@ -1,0 +1,14 @@
+<div class="summary">
+  <p class="stat">
+    <span class="label">Total</span>
+    <span class="value">{{ taskService.totalCount }}</span>
+  </p>
+  <p class="stat">
+    <span class="label">Completed</span>
+    <span class="value">{{ taskService.completedCount }}</span>
+  </p>
+  <p class="stat">
+    <span class="label">Remaining</span>
+    <span class="value">{{ taskService.totalCount - taskService.completedCount }}</span>
+  </p>
+</div>

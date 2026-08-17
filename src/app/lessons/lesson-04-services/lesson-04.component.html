@@ -1,0 +1,95 @@
+<article class="lesson">
+  <p class="eyebrow">Lesson 4 of 4 · Architecture</p>
+  <h1>Services &amp; dependency injection</h1>
+  <p class="lede">
+    Lesson 3 kept <code>tasks[]</code> in the parent. Lesson 4 moves it into a
+    <strong>service</strong> so multiple components can share the same data and logic
+    without passing everything through &#64;Input.
+  </p>
+
+  <section class="card">
+    <h2>1. What is a service?</h2>
+    <ul>
+      <li>A TypeScript class marked with <code>&#64;Injectable</code>.</li>
+      <li>Holds shared data (e.g. <code>tasks[]</code>) and methods (e.g. <code>addTask</code>).</li>
+      <li>Angular creates one instance and <strong>injects</strong> it where you ask for it.</li>
+    </ul>
+    <p>
+      Open <code>task.service.ts</code> — the list and all CRUD logic live there now.
+    </p>
+  </section>
+
+  <section class="card lab">
+    <h2>2. Lab: shared summary (no &#64;Input)</h2>
+    <p>
+      <code>TaskSummaryComponent</code> injects the same <code>TaskService</code>.
+      It reads counts directly — the parent does not pass any data down.
+    </p>
+
+    <div class="playground">
+      <app-task-summary />
+    </div>
+
+    <p class="hint">
+      Add or complete a task below. These numbers update automatically because
+      both components use the same service instance.
+    </p>
+  </section>
+
+  <section class="card lab">
+    <h2>3. Lab: form + list (parent delegates to service)</h2>
+    <p>
+      The form and rows are the same child components from Lesson 3.
+      The parent still listens to <code>(add)</code>, but now calls
+      <code>taskService.addTask()</code> instead of mutating a local array.
+    </p>
+
+    <div class="playground stack">
+      <app-task-form (add)="onAdd($event)" />
+
+      @if (taskService.tasks.length === 0) {
+        <p class="empty">No tasks yet.</p>
+      } @else {
+        <ul class="task-list">
+          @for (task of taskService.tasks; track task.id) {
+            <app-task-row
+              [task]="task"
+              (toggle)="onToggle($event)"
+              (remove)="onRemove($event)"
+            />
+          }
+        </ul>
+      }
+    </div>
+
+    <pre class="code"><code>hieeee{{ injectExample }}</code></pre>
+    <pre class="code"><code>{{ serviceExample }}</code></pre>
+  </section>
+
+  <section class="card">
+    <h2>4. How injection works</h2>
+    <ol>
+      <li><code>&#64;Injectable(&#123; providedIn: 'root' &#125;)</code> registers the service app-wide.</li>
+      <li><code>inject(TaskService)</code> asks Angular for that instance.</li>
+      <li>Angular creates it once (singleton) and reuses it everywhere.</li>
+    </ol>
+    <p class="hint">
+      Older style: <code>constructor(private taskService: TaskService) &#123;&#125;</code>
+      — same idea, different syntax.
+    </p>
+  </section>
+
+  <section class="card next">
+    <h2>What you should remember</h2>
+    <ul>
+      <li>Put shared logic and data in a service, not in a component.</li>
+      <li><code>inject(Service)</code> gets the service instance.</li>
+      <li>Multiple components injecting the same service share one source of truth.</li>
+      <li>Use &#64;Input/&#64;Output for parent-child UI; use services for app-wide sharing.</li>
+    </ul>
+    <p class="hint">
+      Next lesson (when you are ready): HTTP &amp; Observables —
+      loading data from an API with <code>HttpClient</code>.
+    </p>
+  </section>
+</article>
