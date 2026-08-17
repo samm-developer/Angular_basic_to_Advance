@@ -1,0 +1,107 @@
+<article class="lesson">
+  <p class="eyebrow">Lesson 6 of 6 · Forms</p>
+  <h1>Reactive Forms</h1>
+  <p class="lede">
+    Lesson 2 used <code>[(ngModel)]</code> (template-driven forms).
+    Reactive forms define the form in <strong>TypeScript</strong> with
+    <code>FormGroup</code>, <code>FormControl</code>, and <code>Validators</code>.
+  </p>
+
+  <section class="card">
+    <h2>1. Template-driven vs Reactive</h2>
+    <table class="compare">
+      <thead>
+        <tr>
+          <th>Template-driven</th>
+          <th>Reactive</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>[(ngModel)]</code></td>
+          <td><code>formControlName</code></td>
+        </tr>
+        <tr>
+          <td>Logic spread in template</td>
+          <td>Logic in TypeScript class</td>
+        </tr>
+        <tr>
+          <td>Good for simple forms</td>
+          <td>Better for complex validation</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card lab">
+    <h2>2. Lab: add a task with validation</h2>
+    <p>
+      Title must be at least 3 characters. Due date is required.
+      Try submitting empty — error messages appear.
+    </p>
+
+    <form class="playground" [formGroup]="taskForm" (ngSubmit)="submit()">
+      <div class="field">
+        <label for="title">Title</label>
+        <input id="title" type="text" formControlName="title" placeholder="Task title" />
+        @if (taskForm.controls.title.touched && taskForm.controls.title.hasError('required')) {
+          <p class="error">Title is required.</p>
+        }
+        @if (taskForm.controls.title.touched && taskForm.controls.title.hasError('minlength')) {
+          <p class="error">Title must be at least 3 characters.</p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="dueDate">Due date</label>
+        <input id="dueDate" type="date" formControlName="dueDate" />
+        @if (taskForm.controls.dueDate.touched && taskForm.controls.dueDate.hasError('required')) {
+          <p class="error">Due date is required.</p>
+        }
+      </div>
+
+      <div class="actions">
+        <button type="submit" [disabled]="taskForm.invalid">Add task</button>
+        <span class="meta">Form valid: {{ taskForm.valid }}</span>
+      </div>
+
+      <p class="hint">
+        Live value:
+        <code>{{ taskForm.value | json }}</code>
+      </p>
+    </form>
+
+    <pre class="code"><code>{{ reactiveExample }}</code></pre>
+    <pre class="code"><code>{{ templateExample }}</code></pre>
+  </section>
+
+  <section class="card lab">
+    <h2>3. Lab: submitted tasks</h2>
+    @if (tasks.length === 0) {
+      <p class="empty">Submit the form above to add tasks here.</p>
+    } @else {
+      <ul class="task-list">
+        @for (task of tasks; track task.id) {
+          <li>
+            <span class="task-title">{{ task.title }}</span>
+            <span class="task-due">Due {{ task.dueDate | date: 'mediumDate' }}</span>
+          </li>
+        }
+      </ul>
+    }
+  </section>
+
+  <section class="card next">
+    <h2>What you should remember</h2>
+    <ul>
+      <li><code>FormBuilder.group()</code> creates the form model in TS.</li>
+      <li><code>[formGroup]</code> links the form to the template.</li>
+      <li><code>formControlName</code> binds each input to a control.</li>
+      <li><code>Validators</code> run automatically; check <code>.valid</code> / <code>.errors</code>.</li>
+    </ul>
+    <p class="hint">
+      Next topics to explore: custom validators, <code>FormArray</code> for dynamic fields,
+      or routing guards to protect pages.
+    </p>
+  </section>
+</article>

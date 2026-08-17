@@ -18,6 +18,7 @@ Then open [http://localhost:4200](http://localhost:4200).
 | 3 | `@Input` / `@Output` & child components | `/lesson-3` |
 | 4 | Services & dependency injection | `/lesson-4` |
 | 5 | HTTP & Observables (JSONPlaceholder API) | `/lesson-5` |
+| 6 | Reactive Forms & validation | `/lesson-6` |
 
 ## Lesson 1 files to read
 
