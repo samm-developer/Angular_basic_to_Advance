@@ -1,0 +1,133 @@
+<article class="lesson">
+  <p class="eyebrow">Lesson 2 of 2 · Templates</p>
+  <h1>Control flow: &#64;if and &#64;for</h1>
+  <p class="lede">
+    In Lesson 1 you bound data to the page. Here you decide <strong>what to show</strong>
+    and <strong>how many times</strong> — conditionally and from a list.
+  </p>
+
+  <section class="card">
+    <h2>1. New syntax (Angular 17+)</h2>
+    <p>
+      Older Angular used structural directives like <code>*ngIf</code> and <code>*ngFor</code>.
+      Modern Angular uses block syntax directly in the template:
+    </p>
+    <ul>
+      <li><code>&#64;if</code> — show a block when a condition is true</li>
+      <li><code>&#64;else</code> — optional fallback block</li>
+      <li><code>&#64;for</code> — repeat a block for each item in a list</li>
+      <li><code>track</code> — tells Angular how to identify each row (important for performance)</li>
+    </ul>
+  </section>
+
+  <section class="card lab">
+    <h2>2. Lab: conditional UI with &#64;if</h2>
+    <p>
+      The summary below uses <code>&#64;if</code> to show different messages
+      depending on completedCount.
+    </p>
+
+    <div class="playground">
+      @if (completedCount === tasks.length && hasTasks) {
+        <p class="banner success">All tasks done. Nice work.</p>
+      } @else if (completedCount > 0) {
+        <p class="banner progress">
+          {{ completedCount }} of {{ tasks.length }} tasks completed.
+        </p>
+      } @else {
+        <p class="banner idle">No tasks completed yet. Pick one below.</p>
+      }
+    </div>
+
+    <pre class="code"><code>{{ ifExample }}</code></pre>
+  </section>
+
+  <section class="card lab">
+    <h2>3. Lab: lists with &#64;for</h2>
+    <p>
+      <code>tasks</code> is an array in the TypeScript class.
+      <code>&#64;for</code> renders one row per item.
+    </p>
+
+    <div class="playground">
+      <div class="toolbar">
+        <button type="button" (click)="toggleShowCompleted()">
+          {{ showCompleted ? 'Hide completed' : 'Show all' }}
+        </button>
+        <span class="meta">{{ visibleTasks.length }} visible</span>
+      </div>
+
+      @if (visibleTasks.length === 0) {
+        <p class="empty">No tasks to show. Add one or turn completed tasks back on.</p>
+      } @else {
+        <ul class="task-list">
+          @for (task of visibleTasks; track task.id) {
+            <li [class.done]="task.done">
+              <label>
+                <input
+                  type="checkbox"
+                  [checked]="task.done"
+                  (change)="toggleTask(task)"
+                />
+                <span>{{ task.title }}</span>
+              </label>
+              <button type="button" class="ghost" (click)="removeTask(task.id)">
+                Remove
+              </button>
+            </li>
+          }
+        </ul>
+      }
+    </div>
+
+    <pre class="code"><code>{{ forExample }}</code></pre>
+  </section>
+
+  <section class="card lab">
+    <h2>4. Lab: two-way binding with forms</h2>
+    <p>
+      <code>[(ngModel)]</code> keeps an input and a class property in sync.
+      That is how the “Add task” form talks to <code>newTaskTitle</code>.
+    </p>
+
+    <form class="playground add-form" (ngSubmit)="addTask()">
+      <input
+        type="text"
+        name="title"
+        placeholder="What do you want to learn next?"
+        [(ngModel)]="newTaskTitle"
+      />
+      <button type="submit">Add task</button>
+    </form>
+
+    <p class="hint">
+      Live preview of the bound value:
+      <code>{{ newTaskTitle || '(empty)' }}</code>
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>5. Read the TypeScript side</h2>
+    <p>Open <code>lesson-02.component.ts</code> and notice:</p>
+    <ul>
+      <li><code>tasks</code> is the source data for the list.</li>
+      <li><code>visibleTasks</code> is a getter — a computed list for the template.</li>
+      <li><code>addTask()</code> creates a new array (<code>[...tasks, newItem]</code>) so Angular detects the change.</li>
+      <li><code>FormsModule</code> is imported because the template uses <code>ngModel</code>.</li>
+    </ul>
+  </section>
+
+  <section class="card next">
+    <h2>What you should remember</h2>
+    <ul>
+      <li><code>&#64;if</code> chooses <em>whether</em> to render a block.</li>
+      <li><code>&#64;for</code> repeats a block for each item.</li>
+      <li>Always use <code>track</code> with <code>&#64;for</code> (usually an <code>id</code>).</li>
+      <li>Keep list logic in the class; keep the template focused on display.</li>
+    </ul>
+    <p class="hint">
+      Next lesson (when you are ready): components talking to each other —
+      <code>&#64;Input</code>, <code>&#64;Output</code>, and child components.
+    </p>
+  </section>
+</article>
