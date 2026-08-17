@@ -20,6 +20,7 @@ Then open [http://localhost:4200](http://localhost:4200).
 | 5 | HTTP & Observables (JSONPlaceholder API) | `/lesson-5` |
 | 6 | Reactive Forms & validation | `/lesson-6` |
 | 7 | Routing guards & auth | `/lesson-7` (login: `student` / `angular`) |
+| 8 | RxJS & async pipe | `/lesson-8` |
 
 ## Lesson 1 files to read
 

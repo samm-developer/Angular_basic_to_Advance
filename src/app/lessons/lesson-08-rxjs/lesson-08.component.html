@@ -1,0 +1,105 @@
+<article class="lesson">
+  <p class="eyebrow">Lesson 8 of 8 · RxJS</p>
+  <h1>RxJS &amp; the async pipe</h1>
+  <p class="lede">
+    Lesson 5 called <code>.subscribe()</code> in TypeScript.
+    Lesson 8 keeps the Observable in the component and lets the
+    <strong>template</strong> subscribe with <code>| async</code> — less boilerplate,
+    automatic unsubscribe.
+  </p>
+
+  <section class="card">
+    <h2>1. Subscribe vs async pipe</h2>
+    <table class="compare">
+      <thead>
+        <tr>
+          <th>Lesson 5 — subscribe</th>
+          <th>Lesson 8 — async pipe</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>tasks: Task[] = []</code> in class</td>
+          <td><code>viewModel$: Observable&lt;…&gt;</code></td>
+        </tr>
+        <tr>
+          <td>Manual <code>loading</code> / <code>error</code> flags</td>
+          <td>State inside the Observable stream</td>
+        </tr>
+        <tr>
+          <td><code>.subscribe(&#123; next, error &#125;)</code></td>
+          <td><code>viewModel$ | async</code> in template</td>
+        </tr>
+        <tr>
+          <td>Must unsubscribe for long-lived streams</td>
+          <td>async pipe unsubscribes automatically</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card lab">
+    <h2>2. Lab: load tasks with async pipe</h2>
+    <p>
+      Data still comes from JSONPlaceholder (same service as Lesson 5).
+      Click <strong>Reload</strong> — a <code>Subject</code> triggers a fresh HTTP call
+      via <code>switchMap</code>.
+    </p>
+
+    <div class="playground">
+      @if (viewModel$ | async; as vm) {
+        <div class="toolbar">
+          <button type="button" (click)="reload()" [disabled]="vm.loading">
+            {{ vm.loading ? 'Loading…' : 'Reload' }}
+          </button>
+          <span class="meta">{{ vm.tasks.length }} tasks</span>
+        </div>
+
+        @if (vm.loading) {
+          <p class="status loading">Loading tasks…</p>
+        } @else if (vm.error) {
+          <p class="status error">{{ vm.error }}</p>
+        } @else if (vm.tasks.length === 0) {
+          <p class="status idle">No tasks returned.</p>
+        } @else {
+          <ul class="task-list">
+            @for (task of vm.tasks; track task.id) {
+              <li>
+                <span class="task-title" [class.done]="task.done">{{ task.title }}</span>
+                <span class="task-due">Due {{ task.dueDate | date: 'mediumDate' }}</span>
+              </li>
+            }
+          </ul>
+        }
+      }
+    </div>
+
+    <pre class="code"><code>{{ asyncExample }}</code></pre>
+    <pre class="code"><code>{{ pipeExample }}</code></pre>
+  </section>
+
+  <section class="card">
+    <h2>3. RxJS operators used here</h2>
+    <ul>
+      <li><code>Subject</code> — manual “reload” button trigger</li>
+      <li><code>startWith</code> — run immediately on page load</li>
+      <li><code>switchMap</code> — cancel old request when reload is clicked</li>
+      <li><code>map</code> — transform API data (also used in the service)</li>
+      <li><code>catchError</code> — turn HTTP failure into error state</li>
+    </ul>
+  </section>
+
+  <section class="card next">
+    <h2>What you should remember</h2>
+    <ul>
+      <li>Observables are lazy — nothing happens until something subscribes.</li>
+      <li>Prefer <code>| async</code> in templates over manual subscribe when you can.</li>
+      <li><code>switchMap</code> is ideal for HTTP that can be re-triggered (search, reload).</li>
+      <li>Combine operators in the service or component to model loading / success / error.</li>
+    </ul>
+    <p class="hint">
+      You now have the core Angular foundation. Practice by building a small CRUD app
+      combining services, HTTP, reactive forms, and guards.
+    </p>
+  </section>
+</article>

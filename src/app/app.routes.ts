@@ -8,6 +8,7 @@ import { Lesson06Component } from './lessons/lesson-06-reactive-forms/lesson-06.
 import { authGuard } from './lessons/lesson-07-routing-guards/auth.guard';
 import { Lesson07Component } from './lessons/lesson-07-routing-guards/lesson-07.component';
 import { LoginComponent } from './lessons/lesson-07-routing-guards/login/login.component';
+import { Lesson08Component } from './lessons/lesson-08-rxjs/lesson-08.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'lesson-1', pathMatch: 'full' },
@@ -19,4 +20,5 @@ export const routes: Routes = [
   { path: 'lesson-5', component: Lesson05Component },
   { path: 'lesson-6', component: Lesson06Component },
   { path: 'lesson-7', component: Lesson07Component, canActivate: [authGuard] },
+  { path: 'lesson-8', component: Lesson08Component },
 ];
