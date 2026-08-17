@@ -19,6 +19,11 @@
   letter-spacing: -0.02em;
 }
 
+nav {
+  display: flex;
+  gap: 1rem;
+}
+
 nav a {
   color: #d8cfc3;
   text-decoration: none;
