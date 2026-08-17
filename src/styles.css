@@ -1,0 +1,24 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  background: #f6f1e8;
+  color: #1a1612;
+  line-height: 1.55;
+}
+
+button,
+nav,
+.brand {
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+}

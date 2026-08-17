@@ -1,0 +1,111 @@
+<article class="lesson">
+  <p class="eyebrow">Lesson 1 of 1 · Fundamentals</p>
+  <h1>Getting started: components &amp; data binding</h1>
+  <p class="lede">
+    Angular is a TypeScript framework for building web apps as a tree of
+    <strong>components</strong>. This page is itself a component. Change a value
+    in the TypeScript file and watch the view update.
+  </p>
+
+  <section class="card">
+    <h2>1. How this app boots</h2>
+    <ol class="steps">
+      <li><code>index.html</code> loads and contains <code>&lt;app-root&gt;</code>.</li>
+      <li><code>main.ts</code> bootstraps <code>AppComponent</code>.</li>
+      <li><code>AppComponent</code> renders the header and a <code>&lt;router-outlet&gt;</code>.</li>
+      <li>The router loads this lesson at <code>/lesson-1</code>.</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>2. Anatomy of a component</h2>
+    <p>
+      Open these three files together. That trio is the whole component:
+    </p>
+    <ul class="file-list">
+      <li><code>lesson-01.component.ts</code> — class + <code>&#64;Component</code> decorator</li>
+      <li><code>lesson-01.component.html</code> — the view (this page)</li>
+      <li><code>lesson-01.component.css</code> — styles scoped to this view</li>
+    </ul>
+  </section>
+
+  <section class="card lab">
+    <h2>3. Lab: interpolation <code ngNonBindable>{{ }}</code></h2>
+    <p>
+      Interpolation reads a class property and prints it in the template.
+      Angular keeps the DOM in sync when the property changes.
+    </p>
+
+    <div class="playground">
+      <p class="greeting">
+        Hello, <strong>{{ studentName }}</strong>.
+        You are learning <strong>{{ framework }} {{ version }}</strong>.
+      </p>
+      <p class="hint">
+        Edit <code>studentName</code> in <code>lesson-01.component.ts</code>,
+        save, and this sentence updates.
+      </p>
+    </div>
+
+    <pre class="code" ngNonBindable><code>&lt;p&gt;Hello, {{ studentName }}.&lt;/p&gt;</code></pre>
+  </section>
+
+  <section class="card lab">
+    <h2>4. Lab: event binding <code>(click)</code></h2>
+    <p>
+      Parentheses listen for DOM events and call a method on the class.
+      That is how buttons talk to TypeScript.
+    </p>
+
+    <div class="playground counter">
+      <p class="count-label">Count</p>
+      <p class="count-value">{{ count }}</p>
+      <div class="actions">
+        <button type="button" (click)="decrement()" [disabled]="count === 0">
+          − Decrement
+        </button>
+        <button type="button" (click)="increment()">+ Increment</button>
+        <button type="button" class="ghost" (click)="reset()">Reset</button>
+      </div>
+    </div>
+
+    <pre class="code"><code>&lt;button (click)="increment()"&gt;+ Increment&lt;/button&gt;</code></pre>
+  </section>
+
+  <section class="card lab">
+    <h2>5. Lab: property binding <code>[property]</code></h2>
+    <p>
+      Square brackets set a DOM property from a class value.
+      Below, <code>[disabled]</code> and <code>[class.active]</code> both come from
+      <code>isLiked</code>.
+    </p>
+
+    <div class="playground">
+      <button
+        type="button"
+        class="like"
+        [class.active]="isLiked"
+        (click)="toggleLike()"
+      >
+        {{ isLiked ? 'Liked' : 'Like this lesson' }}
+      </button>
+      <p class="hint">isLiked is currently <code>{{ isLiked }}</code></p>
+    </div>
+
+    <pre class="code"><code>&lt;button [class.active]="isLiked" (click)="toggleLike()"&gt;</code></pre>
+  </section>
+
+  <section class="card next">
+    <h2>What you should remember</h2>
+    <ul>
+      <li><code ngNonBindable>{{ value }}</code> displays data.</li>
+      <li><code>(event)</code> listens for user actions.</li>
+      <li><code>[property]</code> pushes data into the DOM.</li>
+      <li>The component class is the source of truth for the view.</li>
+    </ul>
+    <p class="hint">
+      Next lesson (when you are ready): directives, lists, and Angular control flow
+      (<code>&#64;if</code> / <code>&#64;for</code>).
+    </p>
+  </section>
+</article>
