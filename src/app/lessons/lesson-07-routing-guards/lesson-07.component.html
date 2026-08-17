@@ -1,0 +1,50 @@
+<article class="lesson">
+  <p class="eyebrow">Lesson 7 of 7 · Routing</p>
+  <h1>Routing guards</h1>
+  <p class="lede">
+    You reached this page because the <strong>auth guard</strong> allowed it.
+    Guards run <em>before</em> a route loads — perfect for login checks and permissions.
+  </p>
+
+  <section class="card success">
+    <h2>Protected content</h2>
+    <p>You are signed in. Only authenticated users see this section.</p>
+    <button type="button" (click)="logout()">Sign out</button>
+  </section>
+
+  <section class="card">
+    <h2>How it works</h2>
+    <ol>
+      <li>User navigates to <code>/lesson-7</code></li>
+      <li>Router runs <code>canActivate: [authGuard]</code></li>
+      <li>Guard checks <code>AuthService.isLoggedIn()</code></li>
+      <li>If false → redirect to <code>/login?returnUrl=/lesson-7</code></li>
+      <li>After login → navigate back to Lesson 7</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>Files to read</h2>
+    <ul>
+      <li><code>auth.service.ts</code> — login state</li>
+      <li><code>auth.guard.ts</code> — blocks or allows the route</li>
+      <li><code>login/login.component.ts</code> — login form</li>
+      <li><code>app.routes.ts</code> — wires guard to route</li>
+    </ul>
+
+    <pre class="code"><code>{{ guardExample }}</code></pre>
+  </section>
+
+  <section class="card next">
+    <h2>What you should remember</h2>
+    <ul>
+      <li><code>canActivate</code> — can user open this route?</li>
+      <li>Guards return <code>true</code>, <code>false</code>, or a <code>UrlTree</code> redirect.</li>
+      <li>Use a service (e.g. <code>AuthService</code>) to hold login state.</li>
+      <li>Other guards: <code>canDeactivate</code>, <code>canMatch</code>, <code>canActivateChild</code>.</li>
+    </ul>
+    <p class="hint">
+      Try clicking <strong>Lesson 7</strong> in the nav after signing out — you'll hit the guard again.
+    </p>
+  </section>
+</article>

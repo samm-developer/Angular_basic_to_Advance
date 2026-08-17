@@ -1,0 +1,30 @@
+<article class="login-card">
+  <p class="eyebrow">Login required</p>
+  <h1>Sign in to open Lesson 7</h1>
+  <p class="lede">
+    This page exists because the <strong>auth guard</strong> blocked
+    <code>/lesson-7</code> and redirected you here.
+  </p>
+
+  <form (ngSubmit)="submit()">
+    <div class="field">
+      <label for="username">Username</label>
+      <input id="username" name="username" [(ngModel)]="username" placeholder="student" />
+    </div>
+    <div class="field">
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" [(ngModel)]="password" placeholder="angular" />
+    </div>
+
+    @if (error) {
+      <p class="error">{{ error }}</p>
+    }
+
+    <button type="submit">Sign in</button>
+  </form>
+
+  <p class="hint">
+    Demo credentials: <code>student</code> / <code>angular</code>
+  </p>
+  <a routerLink="/lesson-6" class="back">← Back to Lesson 6</a>
+</article>

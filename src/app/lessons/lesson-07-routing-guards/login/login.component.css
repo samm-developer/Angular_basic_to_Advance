@@ -1,0 +1,83 @@
+.login-card {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: #fff;
+  border: 1px solid #e6e0d6;
+  border-radius: 12px;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a2b2b;
+  font-weight: 700;
+}
+
+h1 {
+  margin: 0.35rem 0 0;
+  font-size: 1.6rem;
+}
+
+.lede {
+  margin: 0.75rem 0 1rem;
+  color: #3d3a36;
+  line-height: 1.5;
+}
+
+form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.3rem;
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+input {
+  border: 1px solid #cfc6b8;
+  border-radius: 8px;
+  padding: 0.55rem 0.75rem;
+  font: inherit;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  background: #1a1612;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.error {
+  margin: 0;
+  color: #c3002f;
+  font-size: 0.9rem;
+}
+
+.hint {
+  margin: 1rem 0 0;
+  color: #5c574e;
+  font-size: 0.9rem;
+}
+
+.back {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #1a1612;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
