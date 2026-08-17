@@ -1,0 +1,121 @@
+.lesson {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a2b2b;
+  font-weight: 700;
+}
+
+h1 {
+  margin: 0.2rem 0 0;
+  font-size: 2rem;
+}
+
+.lede {
+  margin: 0.75rem 0 0.25rem;
+  color: #3d3a36;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e6e0d6;
+  border-radius: 12px;
+  padding: 1.25rem 1.35rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+input {
+  flex: 1 1 10rem;
+  border: 1px solid #cfc6b8;
+  border-radius: 8px;
+  padding: 0.55rem 0.75rem;
+  font: inherit;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 0.55rem 0.9rem;
+  background: #1a1612;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.filters button {
+  background: #ebe6dc;
+  color: #1a1612;
+}
+
+.filters button.active {
+  background: #1a1612;
+  color: #fff;
+}
+
+.task-list {
+  list-style: none;
+  margin: 0.9rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.task-list li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 0.75rem;
+  background: #f4efe6;
+  border-radius: 8px;
+  padding: 0.65rem 0.75rem;
+}
+
+.task-list label {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.task-list li.done .task-title {
+  text-decoration: line-through;
+  color: #7a756c;
+}
+
+.task-due {
+  font-size: 0.82rem;
+  color: #5c574e;
+}
+
+.ghost {
+  background: transparent;
+  color: #1a1612;
+  border: 1px solid #cfc6b8;
+}
+
+.empty {
+  margin: 0.8rem 0 0;
+  color: #5c574e;
+}

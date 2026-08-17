@@ -1,0 +1,64 @@
+<article class="lesson">
+  <p class="eyebrow">Lesson 10 · Signals</p>
+  <h1>Signals: `signal`, `computed`, `effect`</h1>
+  <p class="lede">
+    Signals are Angular's modern reactive state API. State is explicit, fast,
+    and easy to reason about without manual subscriptions.
+  </p>
+
+  <section class="card">
+    <h2>1. Core ideas</h2>
+    <ul>
+      <li><code>signal(value)</code> creates writable reactive state.</li>
+      <li><code>computed(() =&gt; ...)</code> derives read-only state.</li>
+      <li><code>effect(() =&gt; ...)</code> runs side effects when dependencies change.</li>
+    </ul>
+  </section>
+
+  <section class="card lab">
+    <h2>2. Task manager with signals</h2>
+
+    <form class="row" (ngSubmit)="addTask()">
+      <input name="title" [(ngModel)]="newTitle" placeholder="Task title" />
+      <input name="dueDate" type="date" [(ngModel)]="newDueDate" />
+      <button type="submit" [disabled]="!newTitle.trim() || !newDueDate">Add</button>
+    </form>
+
+    <div class="filters">
+      <button type="button" (click)="setFilter('all')" [class.active]="filter() === 'all'">
+        All ({{ totalCount() }})
+      </button>
+      <button type="button" (click)="setFilter('open')" [class.active]="filter() === 'open'">
+        Open ({{ openCount() }})
+      </button>
+      <button type="button" (click)="setFilter('done')" [class.active]="filter() === 'done'">
+        Done ({{ doneCount() }})
+      </button>
+    </div>
+
+    @if (visibleTasks().length === 0) {
+      <p class="empty">No tasks in this filter.</p>
+    } @else {
+      <ul class="task-list">
+        @for (task of visibleTasks(); track task.id) {
+          <li [class.done]="task.done">
+            <label>
+              <input type="checkbox" [checked]="task.done" (change)="toggleTask(task.id)" />
+              <span class="task-title">{{ task.title }}</span>
+            </label>
+            <span class="task-due">Due {{ task.dueDate | date: 'mediumDate' }}</span>
+            <button type="button" class="ghost" (click)="removeTask(task.id)">Remove</button>
+          </li>
+        }
+      </ul>
+    }
+  </section>
+
+  <section class="card next">
+    <h2>Interview takeaway</h2>
+    <p>
+      Signals remove a lot of RxJS boilerplate for local UI state. Use signals
+      for component state, and keep RxJS for async streams like HTTP/websocket pipelines.
+    </p>
+  </section>
+</article>
