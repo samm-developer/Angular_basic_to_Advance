@@ -17,6 +17,7 @@ Then open [http://localhost:4200](http://localhost:4200).
 | 2 | Control flow (`@if` / `@for`) & lists | `/lesson-2` |
 | 3 | `@Input` / `@Output` & child components | `/lesson-3` |
 | 4 | Services & dependency injection | `/lesson-4` |
+| 5 | HTTP & Observables | `/lesson-5` |
 
 ## Lesson 1 files to read
 

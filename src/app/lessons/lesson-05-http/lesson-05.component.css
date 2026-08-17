@@ -1,0 +1,140 @@
+.lesson {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a2b2b;
+  font-weight: 700;
+}
+
+h1 {
+  margin: 0.2rem 0 0;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.lede {
+  margin: 0.75rem 0 0.25rem;
+  font-size: 1.05rem;
+  color: #3d3a36;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e6e0d6;
+  border-radius: 12px;
+  padding: 1.25rem 1.35rem;
+  box-shadow: 0 1px 0 rgba(26, 22, 18, 0.04);
+}
+
+.card h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.15rem;
+}
+
+.card ul,
+.card ol {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.card li {
+  margin: 0.4rem 0;
+}
+
+.playground {
+  margin: 1rem 0 0;
+  padding: 1rem;
+  background: #f4efe6;
+  border-radius: 10px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.meta {
+  font-size: 0.85rem;
+  color: #5c574e;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 0.55rem 0.9rem;
+  background: #1a1612;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background: #3b332c;
+}
+
+.status {
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.status.loading {
+  background: #fff3d6;
+  color: #7a4d00;
+}
+
+.status.error {
+  background: #fde8ea;
+  color: #8a1c2a;
+}
+
+.status.idle {
+  background: #ebe6dc;
+  color: #4a443c;
+}
+
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.hint {
+  margin: 0.75rem 0 0;
+  color: #5c574e;
+  font-size: 0.92rem;
+}
+
+.code {
+  margin: 0.75rem 0 0;
+  padding: 0.85rem 1rem;
+  overflow-x: auto;
+  background: #1a1612;
+  color: #f4efe6;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  white-space: pre-wrap;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.9em;
+}

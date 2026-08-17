@@ -1,0 +1,6 @@
+[
+  { "id": 1, "title": "Understand HttpClient.get()", "dueDate": "2026-08-21", "done": false },
+  { "id": 2, "title": "Learn what an Observable is", "dueDate": "2026-08-22", "done": true },
+  { "id": 3, "title": "Handle loading and error states", "dueDate": "2026-08-23", "done": false },
+  { "id": 4, "title": "Reload data with the Reload button", "dueDate": "2026-08-24", "done": false }
+]

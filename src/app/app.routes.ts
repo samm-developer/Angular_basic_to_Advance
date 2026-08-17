@@ -4,6 +4,7 @@ import { Lesson02Component } from './lessons/lesson-02-control-flow/lesson-02.co
 import { Lesson03Component } from './lessons/lesson-03-component-communication/lesson-03.component';
 
 import { Lesson04Component } from './lessons/lesson-04-services/lesson-04.component';
+import { Lesson05Component } from './lessons/lesson-05-http/lesson-05.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'lesson-1', pathMatch: 'full' },
@@ -11,4 +12,5 @@ export const routes: Routes = [
   { path: 'lesson-2', component: Lesson02Component },
   { path: 'lesson-3', component: Lesson03Component },
   { path: 'lesson-4', component: Lesson04Component },
+  { path: 'lesson-5', component: Lesson05Component },
 ];

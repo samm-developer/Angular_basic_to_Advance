@@ -1,0 +1,85 @@
+<article class="lesson">
+  <p class="eyebrow">Lesson 5 of 5 · Data</p>
+  <h1>HTTP &amp; Observables</h1>
+  <p class="lede">
+    So far, task data was hard-coded in TypeScript. Real apps load data from an
+    <strong>API</strong>. Angular uses <code>HttpClient</code>, which returns an
+    <strong>Observable</strong> — data that arrives later.
+  </p>
+
+  <section class="card">
+    <h2>1. What is an Observable?</h2>
+    <p>
+      An Observable is a stream of values over time. A single HTTP request emits
+      one value (the response) then completes. You <strong>subscribe</strong> to
+      receive that value.
+    </p>
+    <ul>
+      <li><code>HttpClient.get()</code> → returns <code>Observable&lt;Task[]&gt;</code></li>
+      <li><code>.subscribe(&#123; next, error &#125;)</code> → runs when data arrives or fails</li>
+      <li>HTTP Observables complete automatically — no manual unsubscribe needed</li>
+    </ul>
+  </section>
+
+  <section class="card lab">
+    <h2>2. Lab: load tasks from JSON</h2>
+    <p>
+      Data comes from <code>public/lessons/tasks.json</code>.
+      Open DevTools → Network tab → click <strong>Reload</strong> to see the request.
+    </p>
+
+    <div class="playground">
+      <div class="toolbar">
+        <button type="button" (click)="loadTasks()" [disabled]="loading">
+          {{ loading ? 'Loading…' : 'Reload' }}
+        </button>
+        <span class="meta">{{ tasks.length }} tasks loaded</span>
+      </div>
+
+      @if (loading) {
+        <p class="status loading">Loading tasks from server…</p>
+      } @else if (error) {
+        <p class="status error">{{ error }}</p>
+      } @else if (tasks.length === 0) {
+        <p class="status idle">No tasks returned.</p>
+      } @else {
+        <ul class="task-list">
+          @for (task of tasks; track task.id) {
+            <app-task-row
+              [task]="task"
+              (toggle)="onToggle($event)"
+              (remove)="onRemove($event)"
+            />
+          }
+        </ul>
+      }
+    </div>
+
+    <pre class="code"><code>{{ httpExample }}</code></pre>
+    <pre class="code"><code>{{ subscribeExample }}</code></pre>
+  </section>
+
+  <section class="card">
+    <h2>3. Files to read</h2>
+    <ol>
+      <li><code>app.config.ts</code> — <code>provideHttpClient()</code> enables HTTP</li>
+      <li><code>public/lessons/tasks.json</code> — fake API response</li>
+      <li><code>task-api.service.ts</code> — wraps <code>HttpClient.get()</code></li>
+      <li><code>lesson-05.component.ts</code> — subscribes and sets <code>loading</code> / <code>error</code></li>
+    </ol>
+  </section>
+
+  <section class="card next">
+    <h2>What you should remember</h2>
+    <ul>
+      <li><code>HttpClient</code> talks to APIs; enable it with <code>provideHttpClient()</code>.</li>
+      <li>HTTP methods return <strong>Observables</strong>, not plain data.</li>
+      <li>Always handle <code>loading</code> and <code>error</code> in the UI.</li>
+      <li>Keep HTTP calls in a service, not directly in the template.</li>
+    </ul>
+    <p class="hint">
+      Next step in your learning: Reactive Forms, Routing guards, or RxJS operators
+      like <code>map</code>, <code>catchError</code>, and the <code>async</code> pipe.
+    </p>
+  </section>
+</article>
